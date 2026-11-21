@@ -1,6 +1,6 @@
 {
-  "name": "VN-580 Plus Online — Máy tính khoa học",
-  "short_name": "VN-580 Plus",
+  "name": "Máy Tính 580 Online — Máy Tính Khoa Học Cho Học Sinh",
+  "short_name": "Máy Tính 580",
   "description": "Máy tính khoa học online miễn phí cho học sinh Việt Nam.",
   "start_url": "./index.html",
   "display": "standalone",
