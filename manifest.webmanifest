@@ -1,0 +1,10 @@
+{
+  "name": "VN-580 Plus Online — Máy tính khoa học",
+  "short_name": "VN-580 Plus",
+  "description": "Máy tính khoa học online miễn phí cho học sinh Việt Nam.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f3efe6",
+  "theme_color": "#23272f",
+  "lang": "vi"
+}
