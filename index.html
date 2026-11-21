@@ -1,0 +1,316 @@
+﻿<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#23272f">
+  <meta name="description" content="Máy tính khoa học VN-580 Online dành cho học sinh Việt Nam: Giải phương trình, hệ phương trình, bất phương trình, tích phân, đạo hàm, bảng giá trị Table, số phức, ma trận, vector.">
+  <title>VN-580 Plus Online — Máy tính khoa học cho học sinh</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="engine.js"></script>
+  <script defer src="modes.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="theme-bar" role="group" aria-label="Chọn giao diện máy tính">
+    <span class="theme-label">Giao diện (Skin):</span>
+    <button class="theme-pill" type="button" data-theme-btn="classic">🎓 Classic 580</button>
+    <button class="theme-pill" type="button" data-theme-btn="hacker">💻 Hacker</button>
+    <button class="theme-pill" type="button" data-theme-btn="kitty">🎀 Mèo Hồng</button>
+    <button class="theme-pill" type="button" data-theme-btn="anime">🌸 Anime Neon</button>
+    <button class="theme-pill" type="button" data-theme-btn="cozy">🪵 Cozy Study</button>
+  </div>
+
+  <main class="app-shell">
+    <!-- VN-580 PLUS -->
+    <section class="casio-body" aria-label="Máy tính khoa học VN-580 Plus">
+      <header class="casio-header">
+        <span class="casio-brand" id="skin-brand">VN-580</span>
+        <span class="casio-model" id="skin-model">SCIENTIFIC<em>PLUS</em></span>
+      </header>
+
+      <div class="lcd-bezel">
+        <div class="lcd-screen">
+          <div class="lcd-status">
+            <span class="badge-ind shift" id="ind-shift">S</span>
+            <span class="badge-ind alpha" id="ind-alpha">A</span>
+            <span class="badge-ind" id="ind-sto">STO</span>
+            <span class="badge-ind" id="ind-mem">M</span>
+            <span class="badge-ind active" id="ind-angle">D</span>
+            <span class="badge-ind active" id="ind-io">MATH</span>
+            <span class="lcd-mode-name" id="ind-mode">1:COMP</span>
+          </div>
+
+          <div id="comp-view">
+            <div class="lcd-expr" id="lcd-expr" aria-label="Biểu thức"></div>
+            <div class="lcd-result" id="lcd-result" aria-live="polite">0</div>
+          </div>
+
+          <div class="mode-panel" id="mode-panel" hidden></div>
+        </div>
+      </div>
+
+      <!-- TOP CONTROLS -->
+      <div class="top-controls">
+        <div class="key-wrap">
+          <div class="key-sub"></div>
+          <button class="ckey pill shift-btn" type="button" id="btn-shift">SHIFT</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"></div>
+          <button class="ckey pill alpha-btn" type="button" id="btn-alpha">ALPHA</button>
+        </div>
+        <div class="dpad" aria-label="Điều hướng">
+          <button class="left" type="button" data-nav="left" title="Trái">◀</button>
+          <button class="up" type="button" data-nav="up" title="Lên">▲</button>
+          <button class="down" type="button" data-nav="down" title="Xuống">▼</button>
+          <button class="right" type="button" data-nav="right" title="Phải">▶</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">SETUP</span></div>
+          <button class="ckey pill" type="button" data-key="menu">MENU</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"></div>
+          <button class="ckey pill" type="button" data-key="on">ON</button>
+        </div>
+      </div>
+
+      <!-- SCIENTIFIC FUNCTION KEYS (6 columns x 4 rows) -->
+      <div class="fn-grid" id="fn-grid">
+        <!-- Row 1 -->
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">QR</span></div>
+          <button class="ckey" type="button" data-key="optn">OPTN</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">SOLVE</span><span class="lbl-a">=</span></div>
+          <button class="ckey" type="button" data-key="calc">CALC</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">d/dx</span></div>
+          <button class="ckey" type="button" data-key="integral">∫dx</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">x!</span></div>
+          <button class="ckey" type="button" data-key="inv">x⁻¹</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">Σ</span></div>
+          <button class="ckey" type="button" data-key="logab">logₐb</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">a b/c</span></div>
+          <button class="ckey" type="button" data-key="sd">S⇔D</button>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">a/b</span></div>
+          <button class="ckey" type="button" data-key="frac">■/□</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">∛</span></div>
+          <button class="ckey" type="button" data-key="sqrt">√</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">x³</span></div>
+          <button class="ckey" type="button" data-key="sq">x²</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">ˣ√</span></div>
+          <button class="ckey" type="button" data-key="pow">x^□</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">10ˣ</span></div>
+          <button class="ckey" type="button" data-key="log">log</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">eˣ</span></div>
+          <button class="ckey" type="button" data-key="ln">ln</button>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">∠</span><span class="lbl-a">A</span></div>
+          <button class="ckey" type="button" data-key="neg">(-)</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">FACT</span><span class="lbl-a">B</span></div>
+          <button class="ckey" type="button" data-key="dms">° ' "</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">Abs</span><span class="lbl-a">C</span></div>
+          <button class="ckey" type="button" data-key="varx">x</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">sin⁻¹</span><span class="lbl-a">D</span></div>
+          <button class="ckey" type="button" data-key="sin">sin</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">cos⁻¹</span><span class="lbl-a">E</span></div>
+          <button class="ckey" type="button" data-key="cos">cos</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">tan⁻¹</span><span class="lbl-a">F</span></div>
+          <button class="ckey" type="button" data-key="tan">tan</button>
+        </div>
+
+        <!-- Row 4 -->
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">RCL</span></div>
+          <button class="ckey" type="button" data-key="sto">STO</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">i</span></div>
+          <button class="ckey" type="button" data-key="eng">ENG</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">%</span></div>
+          <button class="ckey" type="button" data-key="lparen">(</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">,</span><span class="lbl-a">x</span></div>
+          <button class="ckey" type="button" data-key="rparen">)</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">GCD</span><span class="lbl-a">y</span></div>
+          <button class="ckey" type="button" data-key="comma">,</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">M-</span><span class="lbl-a">M</span></div>
+          <button class="ckey" type="button" data-key="mplus">M+</button>
+        </div>
+      </div>
+
+      <!-- NUMBER PAD (5 columns x 4 rows) -->
+      <div class="num-grid" id="num-grid">
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">CONST</span></div>
+          <button class="ckey num" type="button" data-key="7">7</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">CONV</span></div>
+          <button class="ckey num" type="button" data-key="8">8</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">CLR</span></div>
+          <button class="ckey num" type="button" data-key="9">9</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">INS</span></div>
+          <button class="ckey del" type="button" data-key="del">DEL</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">OFF</span></div>
+          <button class="ckey ac" type="button" data-key="ac">AC</button>
+        </div>
+
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">LCM</span></div>
+          <button class="ckey num" type="button" data-key="4">4</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">Int</span></div>
+          <button class="ckey num" type="button" data-key="5">5</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">Intg</span></div>
+          <button class="ckey num" type="button" data-key="6">6</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">nPr</span></div>
+          <button class="ckey op" type="button" data-key="mul">×</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">nCr</span></div>
+          <button class="ckey op" type="button" data-key="div">÷</button>
+        </div>
+
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">STAT</span></div>
+          <button class="ckey num" type="button" data-key="1">1</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">CMPLX</span></div>
+          <button class="ckey num" type="button" data-key="2">2</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">BASE</span></div>
+          <button class="ckey num" type="button" data-key="3">3</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">Pol</span></div>
+          <button class="ckey op" type="button" data-key="add">+</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">Rec</span></div>
+          <button class="ckey op" type="button" data-key="sub">−</button>
+        </div>
+
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">Rnd</span></div>
+          <button class="ckey num" type="button" data-key="0">0</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">Ran#</span><span class="lbl-a">RanInt</span></div>
+          <button class="ckey num" type="button" data-key="dot">.</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">π</span><span class="lbl-a">e</span></div>
+          <button class="ckey" type="button" data-key="exp10" style="font-size:11px;">×10ˣ</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">PreAns</span></div>
+          <button class="ckey" type="button" data-key="ans" style="font-size:12px;">Ans</button>
+        </div>
+        <div class="key-wrap">
+          <div class="key-sub"><span class="lbl-s">≈</span></div>
+          <button class="ckey eq" type="button" data-key="eq">=</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIDE PANEL: HISTORY, MEMORY VARS & QUICK GUIDE -->
+    <aside class="side-panel">
+      <div class="card">
+        <h2 class="card-title">
+          <span>Biến nhớ (Variables)</span>
+          <button class="mode-btn ghost" type="button" id="btn-clear-vars">Xóa biến</button>
+        </h2>
+        <div class="var-strip" id="var-strip"></div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">
+          <span>Lịch sử tính toán</span>
+          <button class="mode-btn ghost" type="button" id="btn-clear-hist">Xóa</button>
+        </h2>
+        <div class="history-list" id="history-list">
+          <p class="empty-hint">Chưa có phép tính nào. Bấm = hoặc Enter để tính.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">Hướng dẫn nhanh cho học sinh</h2>
+        <ul class="guide-list">
+          <li><strong>Giải PT, Hệ PT, Bất PT, Bảng giá trị:</strong> Bấm <kbd>MENU</kbd> rồi chọn chế độ tương ứng (<em>9: Giải PT/Hệ PT</em>, <em>A: Bất PT</em>, <em>8: Bảng giá trị</em>, <em>2: Số phức</em>...).</li>
+          <li><strong>Đổi phân số / căn ↔ số thập phân:</strong> Sau khi bấm <kbd>=</kbd>, bấm <kbd>S⇔D</kbd>. Muốn ra hỗn số bấm <kbd>SHIFT</kbd> + <kbd>S⇔D</kbd>.</li>
+          <li><strong>Tìm nghiệm nhanh (SOLVE):</strong> Gõ phương trình (bấm <kbd>ALPHA</kbd> + <kbd>CALC</kbd> để gõ dấu <code>=</code>), ví dụ <code>x^2-5x+6=0</code>, rồi bấm <kbd>SHIFT</kbd> + <kbd>CALC</kbd>.</li>
+          <li><strong>Phân tích ra thừa số nguyên tố:</strong> Nhập số (vd: <code>360</code>) → bấm <kbd>=</kbd> → bấm <kbd>SHIFT</kbd> + <kbd>° ' "</kbd> (<code>FACT</code>) → ra <code>2³×3²×5</code>.</li>
+          <li><strong>Tính Tích phân & Đạo hàm:</strong>
+            <br>• Tích phân: bấm <kbd>∫dx</kbd> rồi nhập <code>biểu thức, cận dưới, cận trên</code> (vd: <code>∫(x^2, 0, 3)</code>).
+            <br>• Đạo hàm: bấm <kbd>SHIFT</kbd> + <kbd>∫dx</kbd> rồi nhập <code>biểu thức, giá trị x</code> (vd: <code>d/dx(x^3, 2)</code>).
+          </li>
+          <li><strong>Lưu & gọi số vào biến (A, B, x, y...):</strong> Tính xong bấm <kbd>STO</kbd> rồi bấm phím có chữ đỏ tương ứng (vd: <kbd>(-)</kbd> để lưu vào <code>A</code>).</li>
+          <li><strong>Gõ nhanh bằng bàn phím máy tính:</strong> Gõ số <code>0-9</code>, phép tính <code>+ - * / ^ ( )</code>, biến <code>x</code>, <kbd>Enter</kbd> (=), <kbd>Backspace</kbd> (xóa 1 ký tự), <kbd>Esc</kbd> (xóa hết).</li>
+        </ul>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="app-footer">
+    Công cụ học tập độc lập tương thích thao tác máy tính 580VN, không phải sản phẩm chính thức của Casio.
+  </footer>
+</body>
+</html>
